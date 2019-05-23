@@ -1,0 +1,33 @@
+{
+    "root": true,
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jquery": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "no-console": [
+            "error",
+            {
+                "allow": [
+                    "warn",
+                    "error"
+                ]
+            }
+        ]
+    },
+    "globals": {
+        "jQuery": true,
+        "$": true
+    },
+    "settings": {
+        "react": {          
+          "version": "detect"
+        }
+    }
+}
