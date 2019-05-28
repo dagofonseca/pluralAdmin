@@ -19,7 +19,8 @@
                     "error"
                 ]
             }
-        ]
+        ],
+        "react/prop-types": 0
     },
     "globals": {
         "jQuery": true,
