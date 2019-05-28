@@ -36696,6 +36696,29 @@ module.exports = About;
 },{"react":17}],25:[function(require,module,exports){
 var React = require('react');
 
+class Header extends React.Component {
+    render() {
+        return(
+            React.createElement("nav", {className: "navbar navbar-default"}, 
+                React.createElement("div", {className: "container-fluid"}, 
+                    React.createElement("a", {href: "/", className: "navbar-brand"}, 
+                        React.createElement("img", {src: "images/pluralsight-logo.png"})
+                    ), 
+                    React.createElement("ul", {className: "nav navbar-nav"}, 
+                        React.createElement("li", null, React.createElement("a", {href: "/"}, "Home")), 
+                        React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+                    )
+                )
+            )
+        );
+    }
+}
+
+module.exports = Header;
+
+},{"react":17}],26:[function(require,module,exports){
+var React = require('react');
+
 class Home extends React.Component {
     render() {
         return(
@@ -36709,13 +36732,15 @@ class Home extends React.Component {
 
 module.exports = Home;
 
-},{"react":17}],26:[function(require,module,exports){
+},{"react":17}],27:[function(require,module,exports){
 $ = jQuery = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom')
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header= require('./components/common/header');
 var PropTypes = require('prop-types');
+
 
 (function (win) {
     "use strict";
@@ -36731,6 +36756,7 @@ var PropTypes = require('prop-types');
             }
             return (
                 React.createElement("div", null, 
+                    React.createElement(Header, null), 
                     React.createElement(Child, null)
                 )
             )
@@ -36745,12 +36771,10 @@ var PropTypes = require('prop-types');
     function render() {
         var route = win.location.hash.substr(1);
         ReactDOM.render(React.createElement(App, {route: route}), document.getElementById('app'));
-    }
+    } 
     
-    win.addEventListener('hashchange', render);
-    render();
-    
-    ReactDOM.render(React.createElement(Home, null), document.getElementById('app'));
+    win.addEventListener("hashchange", render);
+    render();    
 })(window);
 
-},{"./components/about/aboutPage":24,"./components/homePage":25,"jquery":1,"prop-types":7,"react":17,"react-dom":11}]},{},[26]);
+},{"./components/about/aboutPage":24,"./components/common/header":25,"./components/homePage":26,"jquery":1,"prop-types":7,"react":17,"react-dom":11}]},{},[27]);
