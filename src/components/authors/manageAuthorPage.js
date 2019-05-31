@@ -2,6 +2,7 @@
 
 var React = require('react')
 var AuthorFrom = require('./authorForm');
+var AuthorApi = require('../../api/authorApi');
 
 class ManageAuthorPage extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class ManageAuthorPage extends React.Component {
             author: {id:'', firstName:'', lastName: ''}
         };
         this.setAuthorState = this.setAuthorState.bind(this);
+        this.saveAuthor = this.saveAuthor.bind(this);
     }
     setAuthorState(event){
         let field = event.target.name;
@@ -19,11 +21,18 @@ class ManageAuthorPage extends React.Component {
         newAuthor[field] = value;
         return this.setState({author: newAuthor});
     }
+    saveAuthor(event){
+        event.preventDefault();
+        AuthorApi.saveAuthor(this.state.author);
+    }
     render() {
         return (
             <div>
                 <h1>Manage Author</h1>
-                <AuthorFrom author={this.state.author} onChange={this.setAuthorState}/>
+                <AuthorFrom author={this.state.author} 
+                    onChange={this.setAuthorState}
+                    onSave={this.saveAuthor}
+                />
             </div>            
         );
     }

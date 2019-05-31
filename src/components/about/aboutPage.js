@@ -12,7 +12,7 @@ class About extends React.Component {
             <div>
                 <Prompt
                     when={this.state.isBlocking}
-                    message={"Are you sure you want to go to" }
+                    message={"Are you sure you want to leave this page?" }
                 />
                 <h1>About</h1>
                 <p>
