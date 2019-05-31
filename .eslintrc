@@ -10,6 +10,13 @@
         "eslint:recommended",
         "plugin:react/recommended"
     ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
     "rules": {
         "no-console": [
             "error",
@@ -20,15 +27,16 @@
                 ]
             }
         ],
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "react/jsx-props-no-spreading": 0
     },
     "globals": {
         "jQuery": true,
         "$": true
     },
     "settings": {
-        "react": {          
-          "version": "detect"
+        "react": {
+            "version": "detect"
         }
     }
 }

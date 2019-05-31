@@ -1,9 +1,19 @@
 var React = require('react');
+var Prompt = require('react-router-dom').Prompt;
 
 class About extends React.Component {
+    constructor() {
+        super();
+        this.state = { isBlocking: true };
+    }
+
     render() {
         return (
             <div>
+                <Prompt
+                    when={this.state.isBlocking}
+                    message={"Are you sure you want to go to" }
+                />
                 <h1>About</h1>
                 <p>
                     This aplplication users the following technologies:
