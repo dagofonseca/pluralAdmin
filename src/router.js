@@ -8,6 +8,7 @@ var HomePage = require('./components/homePage');
 var About = require('./components/about/aboutPage');
 var Authors = require('./components/authors/authorPage');
 var NotFound = require('./components/notFoundPage');
+var ManageAuthorPage = require('./components/authors/manageAuthorPage');
 
 class Routes extends React.Component {
     
@@ -17,6 +18,7 @@ class Routes extends React.Component {
                 <Route exact path="/" component={HomePage} />
                 <PrivateRoute path="/about" component={About} />
                 <Route path="/authors" component={Authors} />
+                <Route path="/author" component={ManageAuthorPage} />
                 <Redirect from="/about-us" to="/about" />
                 <Redirect from="/awthors" to="/authors" />
                 <Redirect from="/about/*" to="/about" />
