@@ -2,7 +2,8 @@
 
 var React = require('react')
 var AuthorFrom = require('./authorForm');
-var AuthorApi = require('../../api/authorApi');
+var AuthorActions = require('../../actions/authorActions');
+var AuthorStore = require('../../stores/authorStore');
 var withRouter = require('react-router-dom').withRouter;
 var toastr = require('toastr');
 
@@ -19,7 +20,7 @@ class ManageAuthorPage extends React.Component {
     componentDidMount() {
         const authorId = this.props.match.params.id;        
         if(authorId) {
-            this.setState({author: AuthorApi.getAuthorById(authorId)});            
+            this.setState({author: AuthorStore.getAuthorById(authorId)});            
         }
     }
     setAuthorState(event){
@@ -48,7 +49,7 @@ class ManageAuthorPage extends React.Component {
         if(!this.authorFormIsValid()){
             return ;
         }
-        AuthorApi.saveAuthor(this.state.author);
+        AuthorActions.createAuthor(this.state.author);
         toastr.success('Author saved.');
         this.props.history.push('/authors');
     }
