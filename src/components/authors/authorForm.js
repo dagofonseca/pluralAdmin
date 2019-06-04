@@ -2,6 +2,7 @@
 
 var React = require('react')
 var Input = require('../common/textInput');
+var PropTypes = require('prop-types');
 
 class AuthorForm extends React.Component {
 
@@ -13,11 +14,13 @@ class AuthorForm extends React.Component {
                     label="First Name"
                     value={this.props.author.firstName}
                     onChange={this.props.onChange}
+                    error={this.props.errors.firstName}
                 />
                 <Input name="lastName"
                     label="Last Name"
                     value={this.props.author.lastName}
                     onChange={this.props.onChange}
+                    error={this.props.errors.lastName}
                 />
                 <input type="submit" 
                     value="Save"
@@ -28,5 +31,10 @@ class AuthorForm extends React.Component {
         );
     }
 }
-
+AuthorForm.propTypes = {
+    author: PropTypes.object.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,    
+    errors: PropTypes.object
+};
 module.exports = AuthorForm;

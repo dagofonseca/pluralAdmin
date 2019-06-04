@@ -2,6 +2,7 @@
 
 var React = require('react');
 var PropTypes = require('prop-types');
+var Link = require('react-router-dom').Link;
 
 class AuthorList extends React.Component {
 
@@ -9,7 +10,7 @@ class AuthorList extends React.Component {
         function createAuthorRow(author) {
             return (
                 <tr key={author.id}>
-                    <td><a href={"/#authors/" + author.id}>{author.id}</a></td>
+                    <td><Link to={`author/${author.id}`}>{author.id}</Link></td>
                     <td>{author.fistName} {author.lastName}</td>
                 </tr>
             );

@@ -18,7 +18,8 @@ class Routes extends React.Component {
                 <Route exact path="/" component={HomePage} />
                 <PrivateRoute path="/about" component={About} />
                 <Route path="/authors" component={Authors} />
-                <Route path="/author" component={ManageAuthorPage} />
+                <Route path="/author" exact component={ManageAuthorPage} />
+                <Route path="/author/:id" component={ManageAuthorPage} />
                 <Redirect from="/about-us" to="/about" />
                 <Redirect from="/awthors" to="/authors" />
                 <Redirect from="/about/*" to="/about" />
