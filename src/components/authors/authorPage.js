@@ -2,7 +2,6 @@
 
 var React = require('react');
 var Link = require('react-router-dom').Link;
-var AuthorActions = require('../../actions/authorActions');
 var AuthorStore = require('../../stores/authorStore');
 var AuthorList = require('./authorList');
 
@@ -12,6 +11,16 @@ class Authors extends React.Component {
         this.state = {
             authors: AuthorStore.getAllAuthors()
         }
+        this._onChange = this._onChange.bind(this);        
+    }
+    componentDidMount(){
+        AuthorStore.addChangeListener(this._onChange);
+    }
+    componentWillUnmount() {
+        AuthorStore.removeChangeListener(this._onChange);
+    }
+    _onChange() {
+        this.setState({ authors: AuthorStore.getAllAuthors() });
     }
     render() {        
         return (

@@ -12,6 +12,22 @@ const AuthorActions = {
             actionType: ActionTypes.CREATE_AUTHOR,
             author: newAuthor
         })
+    },
+    updateAuthor: function(author) {
+        let updateAuthor = AuthorApi.saveAuthor(author);
+
+        Dispatcher.dispatch({
+            actionType: ActionTypes.UPDATE_AUTHOR,
+            author: updateAuthor
+        })
+    },
+    deleteAuthor: function(id) {
+        AuthorApi.deleteAuthor(id);
+
+        Dispatcher.dispatch({
+            actionType: ActionTypes.DELETE_AUTHOR,
+            id: id
+        });
     }
 };
 
